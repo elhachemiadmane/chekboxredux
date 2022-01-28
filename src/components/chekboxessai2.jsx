@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Checkbox } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
-
+import { connect } from "react-redux";
 //import moment from "moment";
 //import { connect } from "react-redux";
 
@@ -17,20 +17,10 @@ class Chek2 extends Component {
   choixchange(e) {
     this.setState({ input: e.target.checked });
   }
+  
 
   render() {
-    function onChange(value) {
-      console.log("changed", value);
-    }
-    function onChange(e) {
-      console.log(`checked = ${e.target.checked}`);
-    }
-    function onChange(value) {
-      console.log(`selected ${value}`);
-    }
-    function onSearch(val) {
-      console.log("search:", val);
-    }
+   console.log("WWWWWWWWWWWWW3",this.props)
 
     return (
       <div
@@ -43,11 +33,20 @@ class Chek2 extends Component {
         }}
       >
         Information2 <br />
-        <Button type="primary" icon={<DeleteOutlined />}>
+        <Button type="primary" icon={<DeleteOutlined />} disabled={this.props.etatcheckboxa1}>
           B2
         </Button>{" "}
       </div>
     );
   }
 }
-export default Chek2;
+
+const mapStateToProps = (state) => {
+  console.log("etat du checkbox", state);
+  return {
+    //alpha: "one"
+    etatcheckboxa1: state.checka1,
+  };
+};
+export default connect(mapStateToProps, null)(Chek2)
+

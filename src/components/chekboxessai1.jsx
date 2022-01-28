@@ -1,31 +1,24 @@
 import React, { Component } from "react";
 import { Button, Checkbox } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, ThunderboltFilled } from "@ant-design/icons";
 import { connect } from "react-redux";
 
 class Chek1 extends Component {
   //crer consturoctor
 
   //pour changement au niveau checkbox et enregistrer
-
+  
   render() {
     {
       /* ///////////////////////numéro 1*/
     }
-    function onChange(value) {
-      console.log("changed", value);
-    }
-
+    
     // pour checkbox
     console.log(this.props);
     var dispatch = this.props.dispatch;
 
     function onChange(e) {
       console.log(`checked = ${e.target.checked}`);
-    }
-
-    function onChange(value) {
-      console.log(`selected ${value}`);
     }
 
     function onSearch(val) {
@@ -46,21 +39,22 @@ class Chek1 extends Component {
         {/* ////////////////////////////////////////////////////check box choix de 1  */}
         <Checkbox
           onChange={(e) => {
+            console.log(e.target.checked)
             dispatch({
               type: "is selected a1",
-              step: 1,
+              step: e.target.checked,
             });
           }}
         >
           {" "}
           a1{" "}
-        </Checkbox>
-        <Checkbox onChange={onChange}>a2</Checkbox>
+        </Checkbox >
+        <Checkbox onChange={onChange} disabled={this.props.etatcheckboxa1}>a2</Checkbox>
         <Button
           //style={{etatcheckboxa1==1!}}
           type="primary"
           icon={<EditOutlined />}
-          disabled={!this.state}
+          disabled={!this.props.etatcheckboxa1}
 
           //pour activer ou désavtiver le bouton enregistrer
         >

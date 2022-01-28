@@ -1,19 +1,16 @@
 import { createStore, combineReducers } from "redux";
 //declaration reducers
-const checkReducer = (state = 0, action) => {
+const checkReducer = (state = false, action) => {
   console.log("checkbox a1 is selected", action, state);
   if (action.type == "is selected a1") {
     console.log("checkbox a11 is selected");
-
-    return (state = 1);
-    console.log(state);
-  } else if (action.type == "not selected") {
-    console.log("checkbox a1 is not selected");
-    return state;
-    // console.log(state);
-  }
+    
+    return state= action.step;
+    
+  } 
   return state;
 };
+
 const userReducer = (state = "", action) => {
   console.log("Reducer 1", action, state);
   if (action.type == "set_username") {
